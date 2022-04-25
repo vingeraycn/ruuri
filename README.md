@@ -14,7 +14,7 @@ Any draggable layout supported based muuri for react.
 
 ## Motivation
 
-To be honest, there was already a library called muuri-react that did a React adaptation for muuri before this library came out, but it hadn't been updated for years and his examples and code didn't work with the latest React versions, and there were users in the community asking for help every year.
+To be honest, there was already a library called [muuri-react](https://github.com/paol-imi/muuri-react) that did a React adaptation for [muuri](https://github.com/haltu/muuri) before this library came out, but it hadn't been updated for years and his examples and code didn't work with the latest React versions, and there were users in the community asking for help every year.
 
 In fact we wanted to handle drag and drop only and not rely on a specific muuri or React version, so our product will not contain muuri or React code, the library will rely on the React and muuri versions referenced by the applicable project.
 
