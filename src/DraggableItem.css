@@ -1,0 +1,23 @@
+.draggable-item {
+  user-select: none;
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.draggable-item.muuri-item-positioning {
+  z-index: 2;
+}
+
+.draggable-item.muuri-item-dragging,
+.draggable-item.muuri-item-releasing {
+  z-index: 3;
+}
+
+.draggable-item.muuri-item-dragging {
+  cursor: move;
+}
+
+.draggable-item.muuri-item-hidden {
+  z-index: 0;
+}
