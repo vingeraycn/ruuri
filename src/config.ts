@@ -1,4 +1,4 @@
-export const GRID_OPTIONS_KEY_LIST = [
+export const DRAGGABLE_GRID_OPTIONS_KEY_LIST = [
   'items',
   'showDuration',
   'showEasing',
@@ -34,7 +34,7 @@ export const GRID_OPTIONS_KEY_LIST = [
   'itemPlaceholderClass',
 ]
 
-export const GRID_EVENT_HANDLER_KEY_LIST = [
+export const DRAGGABLE_GRID_EVENT_HANDLER_KEY_LIST = [
   'onSynchronize',
   'onLayoutStart',
   'onLayoutEnd',
@@ -62,4 +62,7 @@ export const GRID_EVENT_HANDLER_KEY_LIST = [
   'onDestroy',
 ]
 
-export const GRID_PROP_KEY_LIST = [...GRID_OPTIONS_KEY_LIST, ...GRID_EVENT_HANDLER_KEY_LIST]
+export const DRAGGABLE_GRID_PROP_KEY_LIST = [
+  ...DRAGGABLE_GRID_OPTIONS_KEY_LIST,
+  ...DRAGGABLE_GRID_EVENT_HANDLER_KEY_LIST,
+]

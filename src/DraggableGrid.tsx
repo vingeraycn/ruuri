@@ -2,7 +2,11 @@ import { css } from '@emotion/react'
 import { merge, omit, pick } from 'lodash-es'
 import Grid, { GridOptions } from 'muuri'
 import { forwardRef, HTMLAttributes, useEffect, useImperativeHandle, useMemo, useRef } from 'react'
-import { GRID_EVENT_HANDLER_KEY_LIST, GRID_OPTIONS_KEY_LIST, GRID_PROP_KEY_LIST } from './config'
+import {
+  DRAGGABLE_GRID_EVENT_HANDLER_KEY_LIST,
+  DRAGGABLE_GRID_OPTIONS_KEY_LIST,
+  DRAGGABLE_GRID_PROP_KEY_LIST,
+} from './config'
 import { GridEventHandlerProps } from './types'
 import { bindGridEvents, unbindEvents } from './utils'
 
@@ -23,8 +27,8 @@ export interface DraggableGridProps
 const DraggableGrid = forwardRef<DraggableGridHandle, DraggableGridProps>((props, ref) => {
   const rootRef = useRef<HTMLDivElement | null>(null)
   const gridRef = useRef<Grid>()
-  const options = useMemo(() => pick(props, GRID_OPTIONS_KEY_LIST), [props])
-  const handlers = useMemo(() => pick(props, GRID_EVENT_HANDLER_KEY_LIST), [props])
+  const options = useMemo(() => pick(props, DRAGGABLE_GRID_OPTIONS_KEY_LIST), [props])
+  const handlers = useMemo(() => pick(props, DRAGGABLE_GRID_EVENT_HANDLER_KEY_LIST), [props])
 
   useEffect(() => {
     if (!rootRef.current) {
@@ -32,8 +36,8 @@ const DraggableGrid = forwardRef<DraggableGridHandle, DraggableGridProps>((props
     }
 
     const grid = new Grid(rootRef.current, merge({}, DEFAULT_GRID_OPTIONS, options))
-    gridRef.current = grid
 
+    gridRef.current = grid
     bindGridEvents(grid, handlers)
 
     return () => {
@@ -53,7 +57,7 @@ const DraggableGrid = forwardRef<DraggableGridHandle, DraggableGridProps>((props
       css={css`
         position: relative;
       `}
-      {...(omit(props, GRID_PROP_KEY_LIST) as HTMLAttributes<HTMLDivElement>)}
+      {...(omit(props, DRAGGABLE_GRID_PROP_KEY_LIST) as unknown as HTMLAttributes<HTMLDivElement>)}
     />
   )
 })
