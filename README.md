@@ -54,10 +54,10 @@ import { useRef } from 'react';
   const ref = useRef<DraggableGridHandle | null>(null)
 
   // get muuri grid instance
-  // ref.current?.getGrid()
+  // ref.current?.grid
 
   // get muuri container dom element
-  // ref.current?.getDOM()
+  // ref.current?.container
 
 ...
   <DraggableGrid ref={ref}>

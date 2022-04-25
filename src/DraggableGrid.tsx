@@ -69,8 +69,8 @@ export interface GridEventHandlerProps {
 }
 
 export type DraggableGridHandle = {
-  getGrid: () => Grid | undefined
-  getDOM: () => HTMLDivElement | null
+  grid: Grid | undefined
+  container: HTMLDivElement | null
 }
 
 export interface DraggableGridProps
@@ -101,8 +101,12 @@ const DraggableGrid = forwardRef<DraggableGridHandle, DraggableGridProps>((props
   }, [handlers, options])
 
   useImperativeHandle(ref, () => ({
-    getGrid: () => gridRef.current,
-    getDOM: () => rootRef.current,
+    get grid() {
+      return gridRef.current
+    },
+    get container() {
+      return rootRef.current
+    },
   }))
 
   return (
