@@ -1,4 +1,4 @@
-import clsx from 'clsx'
+import { css } from '@emotion/react'
 import { merge, omit, pick } from 'lodash-es'
 import Grid, { GridOptions } from 'muuri'
 import { forwardRef, HTMLAttributes, useEffect, useImperativeHandle, useMemo, useRef } from 'react'
@@ -7,7 +7,6 @@ import {
   DRAGGABLE_GRID_OPTIONS_KEY_LIST,
   DRAGGABLE_GRID_PROP_KEY_LIST,
 } from './config'
-import './DraggableGrid.css'
 import { GridEventHandlerProps } from './types'
 import { bindGridEvents, unbindEvents } from './utils'
 
@@ -25,46 +24,43 @@ export interface DraggableGridProps
     GridOptions,
     GridEventHandlerProps {}
 
-const DraggableGrid = forwardRef<DraggableGridHandle, DraggableGridProps>(
-  ({ className, ...props }, ref) => {
-    const rootRef = useRef<HTMLDivElement | null>(null)
-    const gridRef = useRef<Grid>()
-    const options = useMemo(() => pick(props, DRAGGABLE_GRID_OPTIONS_KEY_LIST), [props])
-    const handlers = useMemo(() => pick(props, DRAGGABLE_GRID_EVENT_HANDLER_KEY_LIST), [props])
+const DraggableGrid = forwardRef<DraggableGridHandle, DraggableGridProps>((props, ref) => {
+  const rootRef = useRef<HTMLDivElement | null>(null)
+  const gridRef = useRef<Grid>()
+  const options = useMemo(() => pick(props, DRAGGABLE_GRID_OPTIONS_KEY_LIST), [props])
+  const handlers = useMemo(() => pick(props, DRAGGABLE_GRID_EVENT_HANDLER_KEY_LIST), [props])
 
-    useEffect(() => {
-      if (!rootRef.current) {
-        return
-      }
+  useEffect(() => {
+    if (!rootRef.current) {
+      return
+    }
 
-      const grid = new Grid(rootRef.current, merge({}, DEFAULT_GRID_OPTIONS, options))
+    const grid = new Grid(rootRef.current, merge({}, DEFAULT_GRID_OPTIONS, options))
 
-      gridRef.current = grid
-      bindGridEvents(grid, handlers)
+    gridRef.current = grid
+    bindGridEvents(grid, handlers)
 
-      return () => {
-        unbindEvents(grid, handlers)
-        grid.destroy()
-      }
-    }, [handlers, options])
+    return () => {
+      unbindEvents(grid, handlers)
+      grid.destroy()
+    }
+  }, [handlers, options])
 
-    useImperativeHandle(ref, () => ({
-      getGrid: () => gridRef.current,
-      getDOM: () => rootRef.current,
-    }))
+  useImperativeHandle(ref, () => ({
+    getGrid: () => gridRef.current,
+    getDOM: () => rootRef.current,
+  }))
 
-    return (
-      <div
-        ref={rootRef}
-        className={clsx(className, 'draggable-grid')}
-        {...(omit(
-          props,
-          DRAGGABLE_GRID_PROP_KEY_LIST,
-        ) as unknown as HTMLAttributes<HTMLDivElement>)}
-      />
-    )
-  },
-)
+  return (
+    <div
+      ref={rootRef}
+      css={css`
+        position: relative;
+      `}
+      {...(omit(props, DRAGGABLE_GRID_PROP_KEY_LIST) as unknown as HTMLAttributes<HTMLDivElement>)}
+    />
+  )
+})
 
 DraggableGrid.displayName = 'DraggableGrid'
 export default DraggableGrid
