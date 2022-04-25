@@ -9,8 +9,31 @@
       "require": "./dist/ruuri.umd.js"
     }
   },
+  "keywords": [
+    "grid",
+    "layout",
+    "bin-packing",
+    "filter",
+    "sort",
+    "drag",
+    "react"
+  ],
+  "homepage": "https://muuri.dev/",
+  "author": {
+    "name": "vingeraycn",
+    "email": "vingeray@gmail.com",
+    "url": "https://github.com/vingeraycn"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:vingeraycn/ruuri.git"
+  },
   "files": [
-    "./dist"
+    "./dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "prebuild": "rm -rf dist",
