@@ -1,6 +1,6 @@
 {
   "name": "ruuri",
-  "version": "0.1.1",
+  "version": "0.0.0",
   "main": "./dist/ruuri.es.js",
   "module": "./dist/ruuri.umd.js",
   "exports": {
