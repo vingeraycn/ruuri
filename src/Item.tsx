@@ -4,10 +4,7 @@ import { HTMLAttributes } from 'react'
 
 export interface DraggableItemProps extends HTMLAttributes<HTMLDivElement> {}
 
-export default function DraggableItem({
-  className,
-  ...props
-}: DraggableItemProps) {
+export default function DraggableItem({ className, ...props }: DraggableItemProps) {
   return (
     <div
       css={css`
