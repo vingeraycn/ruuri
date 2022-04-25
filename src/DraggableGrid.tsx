@@ -1,17 +1,71 @@
 import { css } from '@emotion/react'
-import { merge, omit, pick } from 'lodash-es'
-import Grid, { GridOptions } from 'muuri'
+import { forEach, lowerFirst, merge, omit, pick } from 'lodash-es'
+import Grid, { GridEvents, GridOptions } from 'muuri'
 import { forwardRef, HTMLAttributes, useEffect, useImperativeHandle, useMemo, useRef } from 'react'
 import {
   DRAGGABLE_GRID_EVENT_HANDLER_KEY_LIST,
   DRAGGABLE_GRID_OPTIONS_KEY_LIST,
   DRAGGABLE_GRID_PROP_KEY_LIST,
 } from './config'
-import { GridEventHandlerProps } from './types'
-import { bindGridEvents, unbindEvents } from './utils'
 
 const DEFAULT_GRID_OPTIONS: GridOptions = {
   dragEnabled: true,
+}
+
+function bindGridEvents(grid: Grid, handlers: GridEventHandlerProps) {
+  if (!grid) {
+    return
+  }
+
+  forEach(handlers, (handler, key) => {
+    if (!handler) {
+      return
+    }
+
+    grid.on(lowerFirst(key.replace('on', '')) as keyof GridEvents, handler)
+  })
+}
+
+function unbindEvents(grid: Grid, handlers: GridEventHandlerProps) {
+  if (!grid) {
+    return
+  }
+
+  forEach(handlers, (handler, key) => {
+    if (!handler) {
+      return
+    }
+
+    grid.off(lowerFirst(key.replace('on', '')) as keyof GridEvents, handler)
+  })
+}
+
+export interface GridEventHandlerProps {
+  onSynchronize?: GridEvents['synchronize']
+  onLayoutStart?: GridEvents['layoutStart']
+  onLayoutEnd?: GridEvents['layoutEnd']
+  onLayoutAbort?: GridEvents['layoutAbort']
+  onAdd?: GridEvents['add']
+  onRemove?: GridEvents['remove']
+  onShowStart?: GridEvents['showStart']
+  onShowEnd?: GridEvents['showEnd']
+  onHideStart?: GridEvents['hideStart']
+  onHideEnd?: GridEvents['hideEnd']
+  onFilter?: GridEvents['filter']
+  onSort?: GridEvents['sort']
+  onMove?: GridEvents['move']
+  onSend?: GridEvents['send']
+  onBeforeSend?: GridEvents['beforeSend']
+  onReceive?: GridEvents['receive']
+  onBeforeReceive?: GridEvents['beforeReceive']
+  onDragInit?: GridEvents['dragInit']
+  onDragStart?: GridEvents['dragStart']
+  onDragMove?: GridEvents['dragMove']
+  onDragScroll?: GridEvents['dragScroll']
+  onDragEnd?: GridEvents['dragEnd']
+  onDragReleaseStart?: GridEvents['dragReleaseStart']
+  onDragReleaseEnd?: GridEvents['dragReleaseEnd']
+  onDestroy?: GridEvents['destroy']
 }
 
 export type DraggableGridHandle = {

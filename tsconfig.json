@@ -4,6 +4,8 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "types": ["vite/client", "node"],
     "allowJs": false,
+    "declaration": true,
+    "declarationDir": "./dist",
     "skipLibCheck": true,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
@@ -23,5 +25,6 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx", "*.ts"]
+  "include": ["**/*.ts", "**/*.tsx", "*.ts"],
+  "exclude": ["vite.config.ts"]
 }

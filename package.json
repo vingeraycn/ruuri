@@ -1,17 +1,20 @@
 {
   "name": "ruuri",
   "version": "0.1.1",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
+  "main": "./dist/ruuri.es.js",
+  "module": "./dist/ruuri.umd.js",
+  "exports": {
+    ".": {
+      "import": "./dist/ruuri.es.js",
+      "require": "./dist/ruuri.umd.js"
+    }
+  },
   "files": [
     "./dist"
   ],
   "scripts": {
     "prebuild": "rm -rf dist",
-    "build:components": "npx tsc src/* --declaration --jsx react-jsx --jsxImportSource @emotion/react --skipLibCheck --moduleResolution node",
-    "build:cjs": "yarn build:components --outDir dist/cjs/ --module commonjs",
-    "build:esm": "yarn build:components --outDir dist/esm/ --module esnext",
-    "build": "yarn prebuild && yarn build:cjs && yarn build:esm",
+    "build": "yarn prebuild && vite build",
     "serve": "vite preview",
     "cz": "yarn format && git add . && git cz",
     "czp": "yarn cz && git push -u origin HEAD",
@@ -26,6 +29,7 @@
   "devDependencies": {
     "@babel/core": "^7.17.9",
     "@emotion/react": "^11.9.0",
+    "@rollup/plugin-typescript": "^8.3.2",
     "@types/lodash-es": "^4.17.6",
     "@types/node": "^17.0.25",
     "@types/react": "^18.0.5",
