@@ -6,7 +6,7 @@ Any draggable layout supported based muuri for react.
 
 - ✅ [All features](https://github.com/haltu/muuri#:~:text=on%20the%20website.-,Features,-Fully%20customizable%20layout) of `muuri` are supported.
 - ✅ Drag between different containers.
-- ✅ Flexible API no need to learn more, It's React style.
+- ✅ Flexible API, easy to understand, It's React style.
 - ✅ TypeScript support.
 - ✅ ESM, UMD support.
 - ✅ React 16.8+, React 17 and React 18 support.
@@ -34,7 +34,26 @@ yarn add ruuri muuri
 import { DraggableGrid, DraggableItem } from 'ruuri';
 
 ...
-  <DraggableGrid>
+  <DraggableGrid
+    // pass grid options
+    // see more options docs at https://github.com/haltu/muuri#-grid-options
+    dragEnabled
+    dragSort
+    layout={
+      {
+        fillGaps: true
+      }
+    }
+
+    // pass event handlers
+    // see more event docs at https://github.com/haltu/muuri#-grid-events
+    onSend={data => {
+      // write your code here
+    }}
+    onDragStart={(data, event) => {
+      // write your code here
+    }}
+  >
     <DraggableItem>
       {/* write other code */}
     </DraggableItem>
@@ -44,7 +63,8 @@ import { DraggableGrid, DraggableItem } from 'ruuri';
 
 ## Additional
 
-- Handler
+- Use handler
+  > Get current muuri grid instance or container dom element by `ref`.
 
 ```tsx
 import { DraggableGrid, DraggableItem, DraggableGridHandle } from 'ruuri';
@@ -54,7 +74,8 @@ import { useRef } from 'react';
   const ref = useRef<DraggableGridHandle | null>(null)
 
   // get muuri grid instance
-  // ref.current?.grid
+  // @see https://github.com/haltu/muuri#grid-methods
+  // ref.current?.grid?.getElement()
 
   // get muuri container dom element
   // ref.current?.container
