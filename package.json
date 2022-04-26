@@ -25,7 +25,7 @@
     "url": "git@github.com:vingeraycn/ruuri.git"
   },
   "files": [
-    "./dist",
+    "dist",
     "package.json",
     "README.md",
     "LICENSE"
