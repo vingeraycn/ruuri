@@ -3,7 +3,7 @@
   "version": "0.1.2",
   "main": "./dist/ruuri.cjs.js",
   "module": "./dist/ruuri.es.js",
-  "types": "./dist",
+  "types": "./dist/index.d.ts",
   "keywords": [
     "grid",
     "layout",
