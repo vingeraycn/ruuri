@@ -8,7 +8,7 @@ Any draggable layout supported based muuri for react.
 - ✅ Drag between different containers.
 - ✅ Flexible API, easy to understand, It's React style.
 - ✅ TypeScript support.
-- ✅ ESM, UMD support.
+- ✅ ESM, CommonJS support.
 - ✅ React 16.8+, React 17 and React 18 support.
 - ✅ New technology enthusiasts, we will keep it updated if needed.
 

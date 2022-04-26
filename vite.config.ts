@@ -17,6 +17,7 @@ export default defineConfig({
   build: {
     lib: {
       name: pkg.name,
+      formats: ['es', 'cjs'],
       entry: path.resolve(__dirname, 'src/index.ts'),
     },
     rollupOptions: {
