@@ -4,12 +4,6 @@
   "main": "./dist/ruuri.cjs.js",
   "module": "./dist/ruuri.es.js",
   "types": "./dist",
-  "exports": {
-    ".": {
-      "import": "./dist/ruuri.es.js",
-      "require": "./dist/ruuri.umd.js"
-    }
-  },
   "keywords": [
     "grid",
     "layout",
