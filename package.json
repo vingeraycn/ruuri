@@ -24,6 +24,7 @@
     "type": "git",
     "url": "git@github.com:vingeraycn/ruuri.git"
   },
+  "homepage": "https://github.com/vingeraycn/ruuri",
   "files": [
     "dist",
     "package.json",
