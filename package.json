@@ -1,8 +1,9 @@
 {
   "name": "ruuri",
   "version": "0.1.0",
-  "main": "./dist/ruuri.es.js",
-  "module": "./dist/ruuri.umd.js",
+  "main": "./dist/ruuri.cjs.js",
+  "module": "./dist/ruuri.es.js",
+  "types": "./dist",
   "exports": {
     ".": {
       "import": "./dist/ruuri.es.js",
@@ -16,7 +17,8 @@
     "filter",
     "sort",
     "drag",
-    "react"
+    "react",
+    "muuri"
   ],
   "homepage": "https://muuri.dev/",
   "author": {

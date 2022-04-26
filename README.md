@@ -31,7 +31,7 @@ yarn add ruuri muuri
 2. Import `ruuri` Component.
 
 ```jsx
-import { DraggableGrid, DraggableItem } from 'ruuri';
+import DraggableGrid, { DraggableItem } from 'ruuri';
 
 ...
   <DraggableGrid
@@ -67,7 +67,7 @@ import { DraggableGrid, DraggableItem } from 'ruuri';
   > Get current muuri grid instance or container dom element by `ref`.
 
 ```tsx
-import { DraggableGrid, DraggableItem, DraggableGridHandle } from 'ruuri';
+import DraggableGrid, { DraggableItem, DraggableGridHandle } from 'ruuri';
 import { useRef } from 'react';
 
 ...
