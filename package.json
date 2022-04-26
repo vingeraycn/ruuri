@@ -1,6 +1,6 @@
 {
   "name": "ruuri",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "./dist/ruuri.cjs.js",
   "module": "./dist/ruuri.es.js",
   "types": "./dist",
