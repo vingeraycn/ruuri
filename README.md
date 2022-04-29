@@ -17,6 +17,7 @@ Any draggable layout supported based muuri for react.
 - [Get Started](#get-started)
 - [Additional](#additional)
 - [Examples](#examples)
+- [License](#license)
 
 ## Motivation
 
@@ -96,3 +97,7 @@ import { useRef } from 'react';
 
 ## Examples
 - [React 17](https://codesandbox.io/s/ruuri-on-react17-pf1px5)
+
+
+## License
+Copyright © 2022 vingeraycn Licensed under the [MIT license](https://github.com/vingeraycn/ruuri/blob/main/LICENSE).
