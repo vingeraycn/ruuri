@@ -87,3 +87,6 @@ import { useRef } from 'react';
     </DraggableItem>
   </DraggableGrid>
 ```
+
+## Examples
+- [ruuri with React 17](https://codesandbox.io/s/ruuri-on-react17-pf1px5)
