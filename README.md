@@ -100,4 +100,4 @@ import { useRef } from 'react';
 
 
 ## License
-Copyright © 2022 vingeraycn Licensed under the [MIT license](https://github.com/vingeraycn/ruuri/blob/main/LICENSE).
+Copyright © 2022 vingeray Licensed under the [MIT license](https://github.com/vingeraycn/ruuri/blob/main/LICENSE).
