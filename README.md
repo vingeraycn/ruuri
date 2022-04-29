@@ -89,4 +89,4 @@ import { useRef } from 'react';
 ```
 
 ## Examples
-- [ruuri with React 17](https://codesandbox.io/s/ruuri-on-react17-pf1px5)
+- [React 17](https://codesandbox.io/s/ruuri-on-react17-pf1px5)
