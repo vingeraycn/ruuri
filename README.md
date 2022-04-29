@@ -4,7 +4,7 @@ Any draggable layout supported based muuri for react.
 
 ## Features
 
-- ✅ [All features](https://github.com/haltu/muuri#:~:text=on%20the%20website.-,Features,-Fully%20customizable%20layout) of `muuri` are supported.
+- ✅ [All features](https://github.com/haltu/muuri#:~:text=on%20the%20website.-,Features,-Fully%20customizable%20layout) of [`muuri`](https://github.com/haltu/muuri) are supported.
 - ✅ Drag between different containers.
 - ✅ Flexible API, easy to understand, It's React style.
 - ✅ TypeScript support.
