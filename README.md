@@ -12,6 +12,12 @@ Any draggable layout supported based muuri for react.
 - ✅ React 16.8+, React 17 and React 18 support.
 - ✅ New technology enthusiasts, we will keep it updated if needed.
 
+## Table of Content
+- [Motivation](#motivation)
+- [Get Started](#get-started)
+- [Additional](#additional)
+- [Examples](#examples)
+
 ## Motivation
 
 To be honest, there was already a library called [muuri-react](https://github.com/paol-imi/muuri-react) that did a React adaptation for [muuri](https://github.com/haltu/muuri) before this library came out, but it hadn't been updated for years and his examples and code didn't work with the latest React versions, and there were users in the community asking for help every year.
