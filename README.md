@@ -5,7 +5,7 @@ Any draggable layout supported based muuri for react.
 ## Features
 
 - ✅ [All features](https://github.com/haltu/muuri#:~:text=on%20the%20website.-,Features,-Fully%20customizable%20layout) of [`muuri`](https://github.com/haltu/muuri) are supported.
-- ✅ Drag between different containers.
+- ✅ Drag between different containers.(see [Example](#examples))
 - ✅ Flexible API, easy to understand, It's React style.
 - ✅ TypeScript support.
 - ✅ ESM, CommonJS support.
@@ -99,6 +99,7 @@ import { useRef } from 'react';
 ## Examples
 
 - [React 17](https://codesandbox.io/s/ruuri-on-react17-pf1px5)
+- [Drag between different containers](https://codesandbox.io/s/drag-between-grids-vxmu62)
 
 ## License
 
