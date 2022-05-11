@@ -8,11 +8,20 @@ import {
   DRAGGABLE_GRID_PROP_KEY_LIST,
 } from './config'
 
+export type GridEventHandler = {
+  [eventName in keyof GridEvents as `on${Capitalize<string & eventName>}`]?: GridEvents[eventName]
+}
+
+export type DraggableGridHandle = {
+  grid: Grid | undefined
+  container: HTMLDivElement | null
+}
+
 const DEFAULT_GRID_OPTIONS: GridOptions = {
   dragEnabled: true,
 }
 
-function bindGridEvents(grid: Grid, handlers: GridEventHandlerProps) {
+function bindGridEvents(grid: Grid, handlers: GridEventHandler) {
   if (!grid) {
     return
   }
@@ -26,7 +35,7 @@ function bindGridEvents(grid: Grid, handlers: GridEventHandlerProps) {
   })
 }
 
-function unbindEvents(grid: Grid, handlers: GridEventHandlerProps) {
+function unbindEvents(grid: Grid, handlers: GridEventHandler) {
   if (!grid) {
     return
   }
@@ -40,43 +49,10 @@ function unbindEvents(grid: Grid, handlers: GridEventHandlerProps) {
   })
 }
 
-export interface GridEventHandlerProps {
-  onSynchronize?: GridEvents['synchronize']
-  onLayoutStart?: GridEvents['layoutStart']
-  onLayoutEnd?: GridEvents['layoutEnd']
-  onLayoutAbort?: GridEvents['layoutAbort']
-  onAdd?: GridEvents['add']
-  onRemove?: GridEvents['remove']
-  onShowStart?: GridEvents['showStart']
-  onShowEnd?: GridEvents['showEnd']
-  onHideStart?: GridEvents['hideStart']
-  onHideEnd?: GridEvents['hideEnd']
-  onFilter?: GridEvents['filter']
-  onSort?: GridEvents['sort']
-  onMove?: GridEvents['move']
-  onSend?: GridEvents['send']
-  onBeforeSend?: GridEvents['beforeSend']
-  onReceive?: GridEvents['receive']
-  onBeforeReceive?: GridEvents['beforeReceive']
-  onDragInit?: GridEvents['dragInit']
-  onDragStart?: GridEvents['dragStart']
-  onDragMove?: GridEvents['dragMove']
-  onDragScroll?: GridEvents['dragScroll']
-  onDragEnd?: GridEvents['dragEnd']
-  onDragReleaseStart?: GridEvents['dragReleaseStart']
-  onDragReleaseEnd?: GridEvents['dragReleaseEnd']
-  onDestroy?: GridEvents['destroy']
-}
-
-export type DraggableGridHandle = {
-  grid: Grid | undefined
-  container: HTMLDivElement | null
-}
-
 export interface DraggableGridProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, keyof GridEventHandlerProps>,
+  extends Omit<HTMLAttributes<HTMLDivElement>, keyof GridEventHandler>,
     GridOptions,
-    GridEventHandlerProps {}
+    GridEventHandler {}
 
 const DraggableGrid = forwardRef<DraggableGridHandle, DraggableGridProps>((props, ref) => {
   const rootRef = useRef<HTMLDivElement | null>(null)
