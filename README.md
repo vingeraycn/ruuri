@@ -98,7 +98,8 @@ import { useRef } from 'react';
 
 ## Examples
 
-- [React 17](https://codesandbox.io/s/ruuri-on-react17-pf1px5)
+- [With React 16.8](https://codesandbox.io/s/react-16-8-sxds98)
+- [With React 17](https://codesandbox.io/s/ruuri-on-react17-pf1px5)
 - [Drag between different containers](https://codesandbox.io/s/drag-between-grids-vxmu62)
 
 ## License
