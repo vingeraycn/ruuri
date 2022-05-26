@@ -23,7 +23,6 @@ export default defineConfig({
     jsxFactory: 'jsx',
     jsxInject: `
       import React from 'react'  
-      import { jsx } from '@emotion/react'
     `,
   },
   build: {

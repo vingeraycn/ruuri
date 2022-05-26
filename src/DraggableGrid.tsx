@@ -1,4 +1,4 @@
-import { css } from '@emotion/react'
+import clsx from 'clsx'
 import { forEach, lowerFirst, merge, omit, pick } from 'lodash-es'
 import Grid, { GridEvents, GridOptions } from 'muuri'
 import { forwardRef, HTMLAttributes, useEffect, useImperativeHandle, useMemo, useRef } from 'react'
@@ -7,6 +7,7 @@ import {
   DRAGGABLE_GRID_OPTIONS_KEY_LIST,
   DRAGGABLE_GRID_PROP_KEY_LIST,
 } from './config'
+import injectStyle from './injectStyle'
 
 export type GridEventHandler = {
   [eventName in keyof GridEvents as `on${Capitalize<string & eventName>}`]?: GridEvents[eventName]
@@ -88,13 +89,13 @@ const DraggableGrid = forwardRef<DraggableGridHandle, DraggableGridProps>((props
   return (
     <div
       ref={rootRef}
-      css={css`
-        position: relative;
-      `}
       {...(omit(props, DRAGGABLE_GRID_PROP_KEY_LIST) as unknown as HTMLAttributes<HTMLDivElement>)}
+      className={clsx('ruuri-draggable-grid', props.className)}
     />
   )
 })
 
 DraggableGrid.displayName = 'DraggableGrid'
 export default DraggableGrid
+
+injectStyle()
