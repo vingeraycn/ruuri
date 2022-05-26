@@ -46,8 +46,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.17.10",
-    "@emotion/react": "^11.9.0",
     "@rollup/plugin-typescript": "^8.3.2",
     "@types/lodash-es": "^4.17.6",
     "@types/node": "^17.0.31",

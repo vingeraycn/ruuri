@@ -1,0 +1,27 @@
+.ruuri-draggable-grid {
+  position: relative;
+}
+
+.ruuri-draggable-item {
+  user-select: none;
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.ruuri-draggable-item.muuri-item-positioning {
+  z-index: 2;
+}
+
+.ruuri-draggable-item.muuri-item-dragging,
+.ruuri-draggable-item.muuri-item-releasing {
+  z-index: 3;
+}
+
+.ruuri-draggable-item.muuri-item-dragging {
+  cursor: move;
+}
+
+.ruuri-draggable-item.muuri-item-hidden {
+  z-index: 0;
+}
