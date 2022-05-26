@@ -7,6 +7,7 @@ import {
   DRAGGABLE_GRID_OPTIONS_KEY_LIST,
   DRAGGABLE_GRID_PROP_KEY_LIST,
 } from './config'
+import injectStyle from './injectStyle'
 
 export type GridEventHandler = {
   [eventName in keyof GridEvents as `on${Capitalize<string & eventName>}`]?: GridEvents[eventName]
@@ -96,3 +97,5 @@ const DraggableGrid = forwardRef<DraggableGridHandle, DraggableGridProps>((props
 
 DraggableGrid.displayName = 'DraggableGrid'
 export default DraggableGrid
+
+injectStyle()

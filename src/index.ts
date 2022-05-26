@@ -1,5 +1,4 @@
 import DraggableGrid from './DraggableGrid'
-import './index.css'
 
 export * from './config'
 export type { DraggableGridHandle, DraggableGridProps } from './DraggableGrid'
