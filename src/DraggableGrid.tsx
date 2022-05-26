@@ -7,7 +7,6 @@ import {
   DRAGGABLE_GRID_OPTIONS_KEY_LIST,
   DRAGGABLE_GRID_PROP_KEY_LIST,
 } from './config'
-import { ruuriDraggableGrid } from './styles.module.css'
 
 export type GridEventHandler = {
   [eventName in keyof GridEvents as `on${Capitalize<string & eventName>}`]?: GridEvents[eventName]
@@ -90,7 +89,7 @@ const DraggableGrid = forwardRef<DraggableGridHandle, DraggableGridProps>((props
     <div
       ref={rootRef}
       {...(omit(props, DRAGGABLE_GRID_PROP_KEY_LIST) as unknown as HTMLAttributes<HTMLDivElement>)}
-      className={clsx(ruuriDraggableGrid, props.className)}
+      className={clsx('ruuri-draggable-grid', props.className)}
     />
   )
 })

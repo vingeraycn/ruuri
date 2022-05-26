@@ -25,11 +25,6 @@ export default defineConfig({
       import React from 'react'  
     `,
   },
-  css: {
-    modules: {
-      localsConvention: 'camelCaseOnly',
-    },
-  },
   build: {
     lib: {
       name: pkg.name,
