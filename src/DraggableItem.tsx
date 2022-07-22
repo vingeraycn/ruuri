@@ -6,8 +6,8 @@ export interface DraggableItemProps extends HTMLAttributes<HTMLDivElement> {}
 const DraggableItem = forwardRef<HTMLDivElement, DraggableItemProps>(
   ({ className, ...props }, ref) => {
     return (
-      <div className={clsx('ruuri-draggable-item', 'draggable-item')} ref={ref}>
-        <div className={clsx(className, 'draggable-item-content')} {...props} />
+      <div className={clsx('ruuri-draggable-item', 'draggable-item')}>
+        <div className={clsx(className, 'draggable-item-content')} {...props} ref={ref} />
       </div>
     )
   },
