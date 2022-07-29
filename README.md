@@ -2,6 +2,8 @@
 
 Any draggable layout supported based muuri for react.
 
+![example](https://user-images.githubusercontent.com/19839331/181693587-7e0f62f6-11d9-4a34-826d-06caf6dde6ed.gif)
+
 ## Features
 
 - ✅ [All features](https://github.com/haltu/muuri#:~:text=on%20the%20website.-,Features,-Fully%20customizable%20layout) of [`muuri`](https://github.com/haltu/muuri) are supported.
