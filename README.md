@@ -1,8 +1,8 @@
-# ruuri
+![ruuri-logo](https://user-images.githubusercontent.com/19839331/221779778-51c53d3b-c7a9-4f78-bbb7-9414c04b5091.png)
 
-Any draggable layout supported based muuri for react.
+<h3 align="center">Any draggable layout supported based muuri for react.</h3>
 
-![example](https://user-images.githubusercontent.com/19839331/181693587-7e0f62f6-11d9-4a34-826d-06caf6dde6ed.gif)
+<p align="center"><img width="100%" src="https://user-images.githubusercontent.com/19839331/181693587-7e0f62f6-11d9-4a34-826d-06caf6dde6ed.gif" /></p>
 
 ## Features
 
@@ -106,4 +106,4 @@ import { useRef } from 'react';
 
 ## License
 
-Copyright © 2022 [vingeray](https://github.com/vingeraycn) Licensed under the [MIT license](https://github.com/vingeraycn/ruuri/blob/main/LICENSE).
+Copyright © 2022-2023 [vingeray](https://github.com/vingeraycn) Licensed under the [MIT license](https://github.com/vingeraycn/ruuri/blob/main/LICENSE).
