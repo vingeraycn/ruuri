@@ -1,7 +1,7 @@
 import typescript from '@rollup/plugin-typescript'
 import react from '@vitejs/plugin-react'
 import path from 'path'
-import visualize from 'rollup-plugin-visualizer'
+import visualizer from 'rollup-plugin-visualizer'
 import { defineConfig } from 'vite'
 import pkg from './package.json'
 
@@ -12,9 +12,8 @@ export default defineConfig({
     typescript({
       tsconfig: 'tsconfig.json',
       rootDir: 'src',
-      outDir: 'dist',
     }),
-    visualize({
+    visualizer({
       brotliSize: true,
       gzipSize: true,
     }),
@@ -35,6 +34,7 @@ export default defineConfig({
     rollupOptions: {
       external: ['react', 'react-dom', 'muuri'],
       output: {
+        dir: './dist',
         exports: 'named',
         globals: {
           muuri: 'muuri',
