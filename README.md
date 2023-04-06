@@ -4,13 +4,15 @@
 
 <p align="center">Thanks For Your Star ⭐️</p>
 
-![](https://badgen.net/npm/types/tslib)
-![](https://badgen.net/npm/v/ruuri)
-![](https://badgen.net/npm/dm/ruuri)
-![](https://badgen.net/bundlephobia/tree-shaking/react-colorful)
-[![](https://badges.openbase.com/js/rating/ruuri.svg?token=61xZVs6+HDgwhr3rKasOf9EW+xOZiVq/VYZPuBrn6po=)](https://openbase.com/js/ruuri?utm_source=embedded&utm_medium=badge&utm_campaign=rate-badge)
-
-![](https://user-images.githubusercontent.com/19839331/181693587-7e0f62f6-11d9-4a34-826d-06caf6dde6ed.gif)
+<p align="center">
+  <img src="https://badgen.net/npm/types/tslib" />
+  <img src="https://badgen.net/npm/v/ruuri" />
+  <img src="https://badgen.net/npm/dm/ruuri" />
+  <a href="https://openbase.com/js/ruuri?utm_source=embedded&utm_medium=badge&utm_campaign=rate-badge">
+    <img src="https://badges.openbase.com/js/rating/ruuri.svg?token=61xZVs6+HDgwhr3rKasOf9EW+xOZiVq/VYZPuBrn6po=" />
+  </a>
+  <img src="https://user-images.githubusercontent.com/19839331/181693587-7e0f62f6-11d9-4a34-826d-06caf6dde6ed.gif" />
+</p>
 
 ## Features
 
