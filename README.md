@@ -1,16 +1,16 @@
 ![ruuri-logo](https://user-images.githubusercontent.com/19839331/221779778-51c53d3b-c7a9-4f78-bbb7-9414c04b5091.png)
 
-<p align="center">Thanks For Your Star ⭐️</p>
-<p align="center">
-  <a href="https://openbase.com/js/ruuri?utm_source=embedded&amp;utm_medium=badge&amp;utm_campaign=rate-badge">
-    <img src="https://badges.openbase.com/js/rating/ruuri.svg?token=61xZVs6+HDgwhr3rKasOf9EW+xOZiVq/VYZPuBrn6po=" alt="Rate this package">
-  </a>
-</p>
-
 <h3 align="center">Any draggable layout supported based muuri for react.</h3>
 
-<p align="center"><img width="100%" src="https://user-images.githubusercontent.com/19839331/181693587-7e0f62f6-11d9-4a34-826d-06caf6dde6ed.gif" /></p>
+<p align="center">Thanks For Your Star ⭐️</p>
 
+![](https://badgen.net/npm/types/tslib)
+![](https://badgen.net/npm/v/ruuri)
+![](https://badgen.net/npm/dm/ruuri)
+![](https://badgen.net/bundlephobia/tree-shaking/react-colorful)
+[![](https://badges.openbase.com/js/rating/ruuri.svg?token=61xZVs6+HDgwhr3rKasOf9EW+xOZiVq/VYZPuBrn6po=)](https://openbase.com/js/ruuri?utm_source=embedded&utm_medium=badge&utm_campaign=rate-badge)
+
+![](https://user-images.githubusercontent.com/19839331/181693587-7e0f62f6-11d9-4a34-826d-06caf6dde6ed.gif)
 
 ## Features
 
