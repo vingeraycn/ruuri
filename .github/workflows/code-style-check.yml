@@ -3,8 +3,8 @@ name: Code Style Check
 on:
   pull_request:
   push:
-    branches: 
-      - main
+    branches:
+      - '*'
 
 jobs:
   prettier:
