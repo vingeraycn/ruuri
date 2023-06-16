@@ -1,5 +1,3 @@
-![ruuri-logo](https://user-images.githubusercontent.com/19839331/221779778-51c53d3b-c7a9-4f78-bbb7-9414c04b5091.png)
-
 <h3 align="center">Any draggable layout supported based muuri for react.</h3>
 
 <p align="center">Thanks For Your Star ⭐️</p>
