@@ -26,6 +26,10 @@
 - ✅ React 16.8+, React 17 and React 18 support.
 - ✅ New technology enthusiasts, we will keep it updated if needed.
 
+## News
+
+ruuri v2 will be released soon, migration from v1 checkout [here](./CHANGELOG.md)
+
 ## Table of Content
 
 - [Motivation](#motivation)
