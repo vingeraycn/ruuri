@@ -23,7 +23,7 @@
 - ✅ Flexible API, easy to understand, It's React style.
 - ✅ TypeScript support.
 - ✅ ESM, CommonJS support.
-- ✅ React 16.8+, React 17 and React 18 support.
+- ✅ Almost all React versions are supported, such as React 16.8, React 17, React 18 or newer.
 - ✅ New technology enthusiasts, we will keep it updated if needed.
 
 ## News
