@@ -51,10 +51,22 @@ yarn add ruuri muuri
 2. Import `ruuri` Component.
 
 ```jsx
-import DraggableGrid, { DraggableItem } from 'ruuri';
+import DraggableGrid from 'ruuri';
 
 ...
   <DraggableGrid
+    // put your data here
+    data={[
+      {
+        id: 'id-1',
+        ...
+      },
+      {
+        id: 'id-2',
+        ...
+      }
+    ]}
+    renderItem={itemData => (<div>{ // your custom content here }</div>)}
     // pass grid options
     // see more options docs at https://github.com/haltu/muuri#-grid-options
     dragEnabled
@@ -73,11 +85,7 @@ import DraggableGrid, { DraggableItem } from 'ruuri';
     onDragStart={(data, event) => {
       // write your code here
     }}
-  >
-    <DraggableItem>
-      {/* write other code */}
-    </DraggableItem>
-  </DraggableGrid>
+  />
 ...
 ```
 
@@ -101,11 +109,7 @@ import { useRef } from 'react';
   // ref.current?.container
 
 ...
-  <DraggableGrid ref={ref}>
-    <DraggableItem>
-      {/* write other code */}
-    </DraggableItem>
-  </DraggableGrid>
+  <DraggableGrid ref={ref} data={[]} />
 ```
 
 ## Examples
