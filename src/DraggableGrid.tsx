@@ -65,8 +65,8 @@ function unbindEvents(grid: Grid, handlers: GridEventHandler) {
 
 export interface DraggableGridProps<T = any>
   extends Omit<HTMLAttributes<HTMLDivElement>, keyof GridEventHandler | 'children'>,
-  GridOptions,
-  GridEventHandler {
+    GridOptions,
+    GridEventHandler {
   data: T[]
 
   /**
