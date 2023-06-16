@@ -74,16 +74,17 @@ const DraggableGrid = forwardRef<DraggableGridHandle, DraggableGridProps<any>>(
     const rootRef = useRef<HTMLDivElement | null>(null)
     const gridRef = useRef<Grid>()
     const gridControllerRef = useRef<GridController | null>(null)
-    const options = useMemo(() => pick(props, DRAGGABLE_GRID_OPTIONS_KEY_LIST), [props])
     const handlers = useMemo(() => pick(props, DRAGGABLE_GRID_EVENT_HANDLER_KEY_LIST), [props])
 
     const init = useCallback(
       (container: HTMLElement) => {
+        const options = pick(props, DRAGGABLE_GRID_OPTIONS_KEY_LIST)
         const grid = new Grid(container, merge({}, DEFAULT_GRID_OPTIONS, options))
+
         bindGridEvents(grid, handlers)
         return grid
       },
-      [handlers, options],
+      [handlers, props],
     )
 
     const cleanup = useCallback(
