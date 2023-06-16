@@ -97,7 +97,7 @@ import DraggableGrid from 'ruuri';
   > Get current muuri grid instance or container dom element by `ref`.
 
 ```tsx
-import DraggableGrid, { DraggableItem, DraggableGridHandle } from 'ruuri';
+import DraggableGrid, { DraggableGridHandle } from 'ruuri';
 import { useRef } from 'react';
 
 ...
@@ -115,6 +115,12 @@ import { useRef } from 'react';
 ```
 
 ## Examples
+
+### ruuri v2 examples
+
+- []()
+
+### ruuri v1 examples
 
 - [With React 16.8](https://codesandbox.io/s/react-16-8-sxds98)
 - [With React 17](https://codesandbox.io/s/ruuri-on-react17-pf1px5)
