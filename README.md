@@ -9,6 +9,10 @@
   <a href="https://openbase.com/js/ruuri?utm_source=embedded&utm_medium=badge&utm_campaign=rate-badge">
     <img src="https://badges.openbase.com/js/rating/ruuri.svg?token=61xZVs6+HDgwhr3rKasOf9EW+xOZiVq/VYZPuBrn6po=" />
   </a>
+  
+</p>
+
+<p align="center">
   <img src="https://user-images.githubusercontent.com/19839331/181693587-7e0f62f6-11d9-4a34-826d-06caf6dde6ed.gif" />
 </p>
 
