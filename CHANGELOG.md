@@ -27,3 +27,8 @@
 
   Property `uniKey` is the unique key for every data items.
   The default value is `'id'`, you can pass it with lodash-like pathname, such as `content.id`
+
+## Bugfixes and Reasons
+
+- Scroll position lost: Dynamic add or remove grid items will re-construct the grid.
+- Grid items can't delete dynamicly: Views are not bind with grid instance data model.
