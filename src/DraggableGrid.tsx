@@ -63,8 +63,8 @@ function unbindEvents(grid: Grid, handlers: GridEventHandler) {
 
 export interface DraggableGridProps<T extends { id: string }>
   extends Omit<HTMLAttributes<HTMLDivElement>, keyof GridEventHandler>,
-  GridOptions,
-  GridEventHandler {
+    GridOptions,
+    GridEventHandler {
   data: T[]
   renderItem?: (data: T) => ReactNode
 }
