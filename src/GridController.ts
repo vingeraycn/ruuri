@@ -41,7 +41,7 @@ export default class GridController {
     })
   }
 
-  private elementsToItems(elements: HTMLElement[]): Item[] {
+  private toItems(elements: HTMLElement[]): Item[] {
     return compact(elements.map((element) => this.toItem(element)))
   }
 
@@ -66,7 +66,7 @@ export default class GridController {
    * @returns
    */
   private unregisterItems(elements: HTMLElement[]) {
-    const staleItems = this.elementsToItems(elements)
+    const staleItems = this.toItems(elements)
 
     if (!staleItems.length) {
       return
@@ -87,10 +87,6 @@ export default class GridController {
     const staleElements = registeredElements.filter((element) => {
       const elementId = this.getId(element)
       return elementId && staleIds.includes(elementId)
-    })
-    console.log({
-      staleIds,
-      staleElements,
     })
 
     this.unregisterItems(staleElements)
