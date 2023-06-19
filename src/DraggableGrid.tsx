@@ -65,16 +65,17 @@ function unbindEvents(grid: Grid, handlers: GridEventHandler) {
 
 export interface DraggableGridProps<T = any>
   extends Omit<HTMLAttributes<HTMLDivElement>, keyof GridEventHandler | 'children'>,
-    GridOptions,
-    GridEventHandler {
+  GridOptions,
+  GridEventHandler {
   /**
    * data source for grid.
+   *
    */
   data: T[]
 
   /**
    * Unique key for every data item in the grid.
-   * It supports lodash-like properties path names, such as 'content.id'
+   * It supports lodash-like properties path names, such as 'content.id', the uni key must be string type.
    *
    * @default 'id'
    */
