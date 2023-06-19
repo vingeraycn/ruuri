@@ -12,7 +12,7 @@
 
   > Array type, required.
 
-  Property `data` is data source for this grid, every item of data should have unique key(**string type**) for uniquely identify, and you can use property `uniKey` to define which is your data item unique key name.
+  Property `data` is data source for this grid, every item of data should have unique key(**STRING TYPE**) for uniquely identify, and you can use property `uniKey` to define which is your data item unique key name.
 
 - `DraggableGridProps.renderItem`
 
