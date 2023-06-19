@@ -10,19 +10,19 @@
 
 - `DraggableGridProps.data`
 
-  > Array type, Required.
+  > Array type, required.
 
   Property `data` is data source for this grid, every item of data should have unique key(**string type**) for uniquely identify, and you can use property `uniKey` to define which is your data item unique key name.
 
 - `DraggableGridProps.renderItem`
 
-  > Function type, Optional. Default to undefined.
+  > Function type, optional. Default to undefined.
 
   Functions for rendering items with item of data as parameter.
 
 - `DraggableGridProps.uniKey`
 
-  > String type, Optional.
+  > String type, optional.
   > Default to 'id'
 
   Property `uniKey` is the unique key for every data items.
