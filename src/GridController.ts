@@ -96,8 +96,4 @@ export default class GridController {
     this.unregisterItems(staleElements)
     this.registerItems(newElements)
   }
-
-  public destroy() {
-    this.grid.destroy()
-  }
 }

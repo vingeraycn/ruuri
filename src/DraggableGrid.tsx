@@ -65,8 +65,8 @@ function unbindEvents(grid: Grid, handlers: GridEventHandler) {
 
 export interface DraggableGridProps<T = any>
   extends Omit<HTMLAttributes<HTMLDivElement>, keyof GridEventHandler | 'children'>,
-    GridOptions,
-    GridEventHandler {
+  GridOptions,
+  GridEventHandler {
   /**
    * data source for grid.
    *
@@ -146,10 +146,6 @@ function DraggableGrid(
   useDeepCompareEffect(() => {
     const controller = gridControllerRef.current
     controller?.sync(data.map((item) => get(item, uniKey)))
-
-    return () => {
-      controller?.destroy()
-    }
   }, [data])
 
   return (
