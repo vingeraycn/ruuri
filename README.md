@@ -61,7 +61,8 @@ import DraggableGrid from 'ruuri';
 
 ...
   <DraggableGrid
-    // put your data here
+    // Put your data here
+    // Every data item must have a string type unique key.
     data={[
       {
         id: 'id-1',
