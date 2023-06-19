@@ -14,8 +14,14 @@ export default class GridController {
     return element.dataset.ruuriId
   }
 
-  private getRegisteredElements() {
+  private getGridItemElements() {
     return compact(this.grid.getItems().map((item) => item.getElement()))
+  }
+
+  private getRegisteredElements() {
+    return compact(
+      Array.from<HTMLElement>(this.container.querySelectorAll('.ruuri-draggable-item.muuri-item')),
+    )
   }
 
   private getUnregisteredElements() {
@@ -39,6 +45,26 @@ export default class GridController {
     return compact(elements.map((element) => this.toItem(element)))
   }
 
+  /**
+   * registerItems and unregisterItems is sync to the grid model.
+   * registerItems is add items to the grid model.
+   * @param elements
+   * @returns
+   */
+  private registerItems(elements: HTMLElement[]) {
+    if (!elements.length) {
+      return
+    }
+    this.grid.add(elements)
+  }
+
+  /**
+   *
+   * registerItems and unregisterItems is sync to the grid model.
+   * unregisterItems is remove items from the grid model, and remove elements from dom tree.
+   * @param elements
+   * @returns
+   */
   private unregisterItems(elements: HTMLElement[]) {
     const staleItems = this.elementsToItems(elements)
 
@@ -51,27 +77,27 @@ export default class GridController {
     })
   }
 
-  private registerItems(elements: HTMLElement[]) {
-    if (!elements.length) {
-      return
-    }
-    this.grid.add(elements)
-  }
-
   public sync(ids: string[]) {
     const registeredElements = this.getRegisteredElements()
     const registeredElementIds = compact(registeredElements.map(this.getId))
-    const unregisteredElements = this.getUnregisteredElements()
+    const newElements = this.getUnregisteredElements()
 
     // need to remove item ids
     const staleIds = difference(registeredElementIds, ids)
     const staleElements = registeredElements.filter((element) => {
-      const id = this.getId(element)
-      return id && staleIds.includes(id)
+      const elementId = this.getId(element)
+      return elementId && staleIds.includes(elementId)
     })
-    const newElements = unregisteredElements
+    console.log({
+      staleIds,
+      staleElements,
+    })
 
     this.unregisterItems(staleElements)
     this.registerItems(newElements)
+  }
+
+  public destroy() {
+    this.grid.destroy()
   }
 }

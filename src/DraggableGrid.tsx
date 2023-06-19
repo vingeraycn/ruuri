@@ -67,6 +67,9 @@ export interface DraggableGridProps<T = any>
   extends Omit<HTMLAttributes<HTMLDivElement>, keyof GridEventHandler | 'children'>,
     GridOptions,
     GridEventHandler {
+  /**
+   * data source for grid.
+   */
   data: T[]
 
   /**
@@ -76,6 +79,13 @@ export interface DraggableGridProps<T = any>
    * @default 'id'
    */
   uniKey?: string
+
+  /**
+   * grid item renderer
+   * @param data item of data source
+   *
+   * @returns ReactNode
+   */
   renderItem?: (data: T) => ReactNode
 }
 
@@ -133,7 +143,12 @@ function DraggableGrid(
   }))
 
   useDeepCompareEffect(() => {
-    gridControllerRef.current?.sync(data.map((item) => get(item, uniKey)))
+    const controller = gridControllerRef.current
+    controller?.sync(data.map((item) => get(item, uniKey)))
+
+    return () => {
+      controller?.destroy()
+    }
   }, [data])
 
   return (
