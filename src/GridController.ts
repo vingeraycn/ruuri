@@ -61,29 +61,5 @@ export default class GridController {
 
     this.unregisterByIds(staleIds)
     this.registerElements(newElements)
-
-    console.log({
-      ids,
-      idsInGrid: this.getGridItemElements().map((item) => this.getId(item)),
-      staleIds,
-      elemnetsParents: this.getGridItemElements().map((item) => item.parentNode === this.container),
-    })
-    // const registeredElements = this.getRegisteredElements()
-    // const registeredElementIds = compact(registeredElements.map(this.getId))
-    // const newElements = this.getUnregisteredElements()
-
-    // // need to remove item ids
-    // const staleIds = difference(registeredElementIds, ids)
-    // const staleElements = registeredElements.filter((element) => {
-    //   const elementId = this.getId(element)
-    //   return elementId && staleIds.includes(elementId)
-    // })
-
-    // console.log({
-    //   staleIds,
-    //   newIds: newElements.map((item) => this.getId(item)),
-    // })
-    // this.unregisterItems(staleElements)
-    // this.registerItems(newElements)
   }, 50)
 }
