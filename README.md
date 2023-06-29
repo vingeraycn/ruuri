@@ -1,5 +1,3 @@
-![ruuri-logo](https://user-images.githubusercontent.com/19839331/221779778-51c53d3b-c7a9-4f78-bbb7-9414c04b5091.png)
-
 <h3 align="center">Any draggable layout supported based muuri for react.</h3>
 
 <p align="center">Thanks For Your Star ⭐️</p>
@@ -11,6 +9,10 @@
   <a href="https://openbase.com/js/ruuri?utm_source=embedded&utm_medium=badge&utm_campaign=rate-badge">
     <img src="https://badges.openbase.com/js/rating/ruuri.svg?token=61xZVs6+HDgwhr3rKasOf9EW+xOZiVq/VYZPuBrn6po=" />
   </a>
+  
+</p>
+
+<p align="center">
   <img src="https://user-images.githubusercontent.com/19839331/181693587-7e0f62f6-11d9-4a34-826d-06caf6dde6ed.gif" />
 </p>
 
@@ -21,8 +23,12 @@
 - ✅ Flexible API, easy to understand, It's React style.
 - ✅ TypeScript support.
 - ✅ ESM, CommonJS support.
-- ✅ React 16.8+, React 17 and React 18 support.
+- ✅ Almost all React versions are supported, such as React 16.8, React 17, React 18 or newer.
 - ✅ New technology enthusiasts, we will keep it updated if needed.
+
+## Rencently News
+
+ruuri v2 will be released soon, migration from v1 checkout [here](./CHANGELOG.md)
 
 ## Table of Content
 
@@ -51,10 +57,23 @@ yarn add ruuri muuri
 2. Import `ruuri` Component.
 
 ```jsx
-import DraggableGrid, { DraggableItem } from 'ruuri';
+import DraggableGrid from 'ruuri';
 
 ...
   <DraggableGrid
+    // Put your data here
+    // Every data item must have a STRING type unique key, such as the id field in data below.
+    data={[
+      {
+        id: 'id-1',
+        ...
+      },
+      {
+        id: 'id-2',
+        ...
+      }
+    ]}
+    renderItem={itemData => (<div>{ // your custom content here }</div>)}
     // pass grid options
     // see more options docs at https://github.com/haltu/muuri#-grid-options
     dragEnabled
@@ -73,11 +92,7 @@ import DraggableGrid, { DraggableItem } from 'ruuri';
     onDragStart={(data, event) => {
       // write your code here
     }}
-  >
-    <DraggableItem>
-      {/* write other code */}
-    </DraggableItem>
-  </DraggableGrid>
+  />
 ...
 ```
 
@@ -87,7 +102,7 @@ import DraggableGrid, { DraggableItem } from 'ruuri';
   > Get current muuri grid instance or container dom element by `ref`.
 
 ```tsx
-import DraggableGrid, { DraggableItem, DraggableGridHandle } from 'ruuri';
+import DraggableGrid, { DraggableGridHandle } from 'ruuri';
 import { useRef } from 'react';
 
 ...
@@ -101,14 +116,16 @@ import { useRef } from 'react';
   // ref.current?.container
 
 ...
-  <DraggableGrid ref={ref}>
-    <DraggableItem>
-      {/* write other code */}
-    </DraggableItem>
-  </DraggableGrid>
+  <DraggableGrid ref={ref} data={[]} />
 ```
 
 ## Examples
+
+### ruuri v2 examples
+
+- [Drag between diffrent containers with React 18](https://codesandbox.io/s/drag-between-grids-v2-3jvvnr?file=/src/App.js)
+
+### ruuri v1 examples
 
 - [With React 16.8](https://codesandbox.io/s/react-16-8-sxds98)
 - [With React 17](https://codesandbox.io/s/ruuri-on-react17-pf1px5)

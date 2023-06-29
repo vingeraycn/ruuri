@@ -1,7 +1,19 @@
 import clsx from 'clsx'
-import { forEach, lowerFirst, merge, omit, pick } from 'lodash-es'
+import { forEach, get, lowerFirst, merge, omit, pick } from 'lodash-es'
 import Grid, { GridEvents, GridOptions } from 'muuri'
-import { forwardRef, HTMLAttributes, useEffect, useImperativeHandle, useMemo, useRef } from 'react'
+import {
+  ForwardedRef,
+  HTMLAttributes,
+  ReactNode,
+  forwardRef,
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+} from 'react'
+import { useDeepCompareEffect } from 'react-use'
+import GridController from './GridController'
 import {
   DRAGGABLE_GRID_EVENT_HANDLER_KEY_LIST,
   DRAGGABLE_GRID_OPTIONS_KEY_LIST,
@@ -20,6 +32,7 @@ export type DraggableGridHandle = {
 
 const DEFAULT_GRID_OPTIONS: GridOptions = {
   dragEnabled: true,
+  items: '.ruuri-draggable-item',
 }
 
 function bindGridEvents(grid: Grid, handlers: GridEventHandler) {
@@ -50,32 +63,76 @@ function unbindEvents(grid: Grid, handlers: GridEventHandler) {
   })
 }
 
-export interface DraggableGridProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, keyof GridEventHandler>,
+export interface DraggableGridProps<T = any>
+  extends Omit<HTMLAttributes<HTMLDivElement>, keyof GridEventHandler | 'children'>,
     GridOptions,
-    GridEventHandler {}
+    GridEventHandler {
+  /**
+   * data source for grid.
+   *
+   */
+  data: T[]
 
-const DraggableGrid = forwardRef<DraggableGridHandle, DraggableGridProps>((props, ref) => {
+  /**
+   * Unique key for every data item in the grid.
+   * It supports lodash-like properties path names, such as 'content.id', the uni key must be string type.
+   *
+   * @default 'id'
+   */
+  uniKey?: string
+
+  /**
+   * grid item renderer
+   * @param data item of data source
+   *
+   * @returns ReactNode
+   */
+  renderItem?: (data: T) => ReactNode
+}
+
+function DraggableGrid(
+  { data, renderItem, uniKey = 'id', ...props }: DraggableGridProps,
+  ref: ForwardedRef<DraggableGridHandle>,
+) {
   const rootRef = useRef<HTMLDivElement | null>(null)
   const gridRef = useRef<Grid>()
-  const options = useMemo(() => pick(props, DRAGGABLE_GRID_OPTIONS_KEY_LIST), [props])
+  const gridControllerRef = useRef<GridController | null>(null)
   const handlers = useMemo(() => pick(props, DRAGGABLE_GRID_EVENT_HANDLER_KEY_LIST), [props])
 
+  const init = useCallback(
+    (container: HTMLElement) => {
+      const options = pick(props, DRAGGABLE_GRID_OPTIONS_KEY_LIST)
+      const grid = new Grid(container, merge({}, DEFAULT_GRID_OPTIONS, options))
+
+      bindGridEvents(grid, handlers)
+      return grid
+    },
+    [handlers, props],
+  )
+
+  const cleanup = useCallback(
+    (grid: Grid) => {
+      unbindEvents(grid, handlers)
+      grid.destroy()
+    },
+    [handlers],
+  )
+
   useEffect(() => {
-    if (!rootRef.current) {
+    const container = rootRef.current
+    if (!container) {
       return
     }
 
-    const grid = new Grid(rootRef.current, merge({}, DEFAULT_GRID_OPTIONS, options))
-
+    const grid = init(container)
     gridRef.current = grid
-    bindGridEvents(grid, handlers)
+    gridControllerRef.current = new GridController(grid, container)
 
     return () => {
-      unbindEvents(grid, handlers)
-      grid.destroy()
+      cleanup(grid)
     }
-  }, [handlers, options])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   useImperativeHandle(ref, () => ({
     get grid() {
@@ -86,16 +143,33 @@ const DraggableGrid = forwardRef<DraggableGridHandle, DraggableGridProps>((props
     },
   }))
 
+  useDeepCompareEffect(() => {
+    const controller = gridControllerRef.current
+    controller?.sync(data.map((item) => get(item, uniKey)))
+  }, [data])
+
   return (
     <div
       ref={rootRef}
       {...(omit(props, DRAGGABLE_GRID_PROP_KEY_LIST) as unknown as HTMLAttributes<HTMLDivElement>)}
       className={clsx('ruuri-draggable-grid', props.className)}
-    />
+    >
+      {data.map((item) => {
+        const id = get(item, uniKey)
+        return (
+          <div
+            className="ruuri-draggable-item ruuri-draggable-item-initial draggable-item"
+            data-ruuri-id={id}
+            key={id}
+          >
+            <div className="draggable-item-content">{renderItem?.(item)}</div>
+          </div>
+        )
+      })}
+    </div>
   )
-})
+}
 
-DraggableGrid.displayName = 'DraggableGrid'
-export default DraggableGrid
+export default forwardRef(DraggableGrid)
 
 injectStyle()

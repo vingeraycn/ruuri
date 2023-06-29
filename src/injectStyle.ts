@@ -19,8 +19,11 @@ export default function injectStyle() {
       position: absolute;
       z-index: 1;
       cursor: pointer;
+
+      pointer-events: none;
+      opacity: 0;
     }
-    
+
     .ruuri-draggable-item.muuri-item-positioning {
       z-index: 2;
     }
@@ -36,6 +39,11 @@ export default function injectStyle() {
     
     .ruuri-draggable-item.muuri-item-hidden {
       z-index: 0;
+    }
+
+    .ruuri-draggable-item.muuri-item-shown {
+      pointer-events: auto;
+      opacity:1;
     }
   `
   document.head.appendChild(style)
