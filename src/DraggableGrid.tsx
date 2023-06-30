@@ -157,11 +157,7 @@ function DraggableGrid(
       {data.map((item) => {
         const id = get(item, uniKey)
         return (
-          <div
-            className="ruuri-draggable-item ruuri-draggable-item-initial draggable-item"
-            data-ruuri-id={id}
-            key={id}
-          >
+          <div className="ruuri-draggable-item draggable-item" data-ruuri-id={id} key={id}>
             <div className="draggable-item-content">{renderItem?.(item)}</div>
           </div>
         )
