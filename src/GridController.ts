@@ -4,24 +4,26 @@ import Grid, { Item } from 'muuri'
 export default class GridController {
   private grid: Grid
   private container: HTMLElement
+  private registeredElements: WeakSet<HTMLElement>
 
   constructor(grid: Grid, container: HTMLElement) {
     this.grid = grid
     this.container = container
+    this.registeredElements = new WeakSet(this.getGridItemElements())
   }
 
   private getId(element: HTMLElement) {
     return element.dataset.ruuriId
   }
 
-  private getGridItemElements() {
-    return compact(this.grid.getItems().map((item) => item.getElement()))
+  private getGridItemElements(items?: Item[]) {
+    return compact(this.grid.getItems(items).map((item) => item.getElement()))
   }
 
   private getUnregisteredElements() {
     return compact(
-      Array.from<HTMLElement>(
-        this.container.querySelectorAll('.ruuri-draggable-item.ruuri-draggable-item-initial'),
+      Array.from<HTMLElement>(this.container.querySelectorAll('[data-ruuri-id]')).filter(
+        (element) => !this.registeredElements.has(element),
       ),
     )
   }
@@ -31,9 +33,7 @@ export default class GridController {
       return
     }
     this.grid.add(elements, {})
-    elements.forEach((element) => {
-      element.classList.remove('ruuri-draggable-item-initial')
-    })
+    elements.forEach((element) => this.registeredElements.add(element))
   }
 
   private unregisterItems(items: Item[]) {
@@ -41,6 +41,7 @@ export default class GridController {
       return
     }
     this.grid.remove(items, {})
+    this.getGridItemElements(items).forEach((element) => this.registeredElements.delete(element))
   }
 
   private unregisterByIds(ids: string[]) {
