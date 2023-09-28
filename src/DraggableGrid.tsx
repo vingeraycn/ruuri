@@ -11,6 +11,7 @@ import clsx from 'clsx'
 import { forEach, get, lowerFirst, merge, omit, pick } from 'lodash-es'
 import Grid, { GridEvents, GridOptions } from 'muuri'
 import {
+  ComponentPropsWithoutRef,
   ForwardedRef,
   HTMLAttributes,
   ReactNode,
@@ -39,6 +40,18 @@ export type DraggableGridHandle = {
   grid: Grid | undefined
   container: HTMLDivElement | null
 }
+
+// omit key as it is assigned internally
+export type GetItemProps<T> = (
+  itemData: T,
+  index: number,
+) => Omit<ComponentPropsWithoutRef<'div'>, 'key'>
+
+// omit key as it is assigned internally
+export type GetItemContentProps<T> = (
+  itemData: T,
+  index: number,
+) => Omit<ComponentPropsWithoutRef<'div'>, 'key'>
 
 const DEFAULT_GRID_OPTIONS: GridOptions = {
   dragEnabled: true,
@@ -83,6 +96,22 @@ export interface DraggableGridProps<T>
    */
   data: T[]
 
+  /**
+   * merges returned props into the wrapper item's props
+   *
+   * @param itemData item of the data source
+   * @param index index of the current item
+   */
+  getItemProps?: GetItemProps<T>
+
+  /**
+   * merges returned props into the item content's props
+   *
+   * @param itemData item of the data source
+   * @param index index of the current item
+   */
+  getItemContentProps?: GetItemContentProps<T>
+
   // Using the LiteralUnion type gives us autocomplete for the
   // first depth of keys
   /**
@@ -103,7 +132,14 @@ export interface DraggableGridProps<T>
 }
 
 function DraggableGrid<T>(
-  { data, renderItem, uniKey = 'id', ...props }: DraggableGridProps<T>,
+  {
+    data,
+    getItemProps,
+    getItemContentProps,
+    renderItem,
+    uniKey = 'id',
+    ...props
+  }: DraggableGridProps<T>,
   ref: ForwardedRef<DraggableGridHandle>,
 ) {
   const rootRef = useRef<HTMLDivElement | null>(null)
@@ -166,7 +202,7 @@ function DraggableGrid<T>(
       {...(omit(props, DRAGGABLE_GRID_PROP_KEY_LIST) as unknown as HTMLAttributes<HTMLDivElement>)}
       className={clsx('ruuri-draggable-grid', props.className)}
     >
-      {data.map((item) => {
+      {data.map((item, index) => {
         const id = get(item, uniKey)
 
         if (!(typeof id === 'string' || typeof id === 'number')) {
@@ -175,9 +211,17 @@ function DraggableGrid<T>(
           )
         }
 
+        const itemProps = getItemProps?.(item, index)
+        const itemClassName = clsx('ruuri-draggable-item draggable-item', itemProps?.className)
+
+        const itemContentProps = getItemContentProps?.(item, index)
+        const itemContentClassName = clsx('draggable-item-content', itemContentProps?.className)
+
         return (
-          <div className="ruuri-draggable-item draggable-item" data-ruuri-id={id} key={id}>
-            <div className="draggable-item-content">{renderItem?.(item)}</div>
+          <div {...itemProps} className={itemClassName} data-ruuri-id={id} key={id}>
+            <div {...itemContentProps} className={itemContentClassName}>
+              {renderItem?.(item)}
+            </div>
           </div>
         )
       })}
