@@ -1,3 +1,12 @@
+// Redecalare forwardRef to restore type inference on the forwarded component
+// see: https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/forward_and_create_ref/#generic-forwardrefs
+declare module 'react' {
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  function forwardRef<T, P = {}>(
+    render: (props: P, ref: React.Ref<T>) => React.ReactElement | null,
+  ): (props: P & React.RefAttributes<T>) => React.ReactElement | null
+}
+
 import clsx from 'clsx'
 import { forEach, get, lowerFirst, merge, omit, pick } from 'lodash-es'
 import Grid, { GridEvents, GridOptions } from 'muuri'
@@ -13,6 +22,7 @@ import {
   useRef,
 } from 'react'
 import { useDeepCompareEffect } from 'react-use'
+import { LiteralUnion } from 'type-fest'
 import GridController from './GridController'
 import {
   DRAGGABLE_GRID_EVENT_HANDLER_KEY_LIST,
@@ -63,7 +73,7 @@ function unbindEvents(grid: Grid, handlers: GridEventHandler) {
   })
 }
 
-export interface DraggableGridProps<T = any>
+export interface DraggableGridProps<T>
   extends Omit<HTMLAttributes<HTMLDivElement>, keyof GridEventHandler | 'children'>,
     GridOptions,
     GridEventHandler {
@@ -73,13 +83,15 @@ export interface DraggableGridProps<T = any>
    */
   data: T[]
 
+  // Using the LiteralUnion type gives us autocomplete for the
+  // first depth of keys
   /**
    * Unique key for every data item in the grid.
    * It supports lodash-like properties path names, such as 'content.id', the uni key must be string type.
    *
    * @default 'id'
    */
-  uniKey?: string
+  uniKey?: LiteralUnion<keyof T, string>
 
   /**
    * grid item renderer
@@ -90,8 +102,8 @@ export interface DraggableGridProps<T = any>
   renderItem?: (data: T) => ReactNode
 }
 
-function DraggableGrid(
-  { data, renderItem, uniKey = 'id', ...props }: DraggableGridProps,
+function DraggableGrid<T>(
+  { data, renderItem, uniKey = 'id', ...props }: DraggableGridProps<T>,
   ref: ForwardedRef<DraggableGridHandle>,
 ) {
   const rootRef = useRef<HTMLDivElement | null>(null)
@@ -156,6 +168,13 @@ function DraggableGrid(
     >
       {data.map((item) => {
         const id = get(item, uniKey)
+
+        if (!(typeof id === 'string' || typeof id === 'number')) {
+          throw new TypeError(
+            `The value of the ${String(uniKey)} property must be a string or number`,
+          )
+        }
+
         return (
           <div className="ruuri-draggable-item draggable-item" data-ruuri-id={id} key={id}>
             <div className="draggable-item-content">{renderItem?.(item)}</div>
