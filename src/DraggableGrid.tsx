@@ -7,6 +7,7 @@ declare module 'react' {
   ): (props: P & React.RefAttributes<T>) => React.ReactElement | null
 }
 
+import { useDeepCompareEffect } from '@react-hookz/web'
 import clsx from 'clsx'
 import { forEach, get, lowerFirst, merge, omit, pick } from 'lodash-es'
 import Grid, { GridEvents, GridOptions } from 'muuri'
@@ -22,7 +23,6 @@ import {
   useMemo,
   useRef,
 } from 'react'
-import { useDeepCompareEffect } from 'react-use'
 import { LiteralUnion } from 'type-fest'
 import GridController from './GridController'
 import {
@@ -153,6 +153,7 @@ function DraggableGrid<T>(
       const grid = new Grid(container, merge({}, DEFAULT_GRID_OPTIONS, options))
 
       bindGridEvents(grid, handlers)
+
       return grid
     },
     [handlers, props],

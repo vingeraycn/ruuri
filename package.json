@@ -41,10 +41,11 @@
     "upgrade-deps": "yarn check-deps -u && yarn",
     "lint": "prettier --check .",
     "format": "yarn lint --write",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "prepare": "npm run build"
   },
   "dependencies": {
-    "react-use": "^17.4.0",
+    "@react-hookz/web": "^23.1.0",
     "type-fest": "^4.3.2"
   },
   "devDependencies": {
