@@ -1,3 +1,11 @@
+# v2.1.0
+## Breaking Changes
+None
+
+## New API
+- `getItemProps: (itemData: T, index: number) => Omit<ComponentPropsWithoutRef<'div'>, 'key'>`: set properties of item content container's parent
+- `getItemContentProps: (itemData: T, index: number) => Omit<ComponentPropsWithoutRef<'div'>, 'key'>`: set item content container properties
+
 # v2.0.0
 
 ## Breaking Changes
