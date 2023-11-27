@@ -119,6 +119,29 @@ import { useRef } from 'react';
   <DraggableGrid ref={ref} data={[]} />
 ```
 
+- Use `getItemProps` and `getItemContentProps` to set container properties if you need it.
+```tsx
+
+...
+
+const data: T[] = []
+
+<DraggableGrid
+ ...
+ data={data}
+ getItemProps={(itemData: T) => ({
+   style: {
+     background: 'black',
+   },
+  })}
+  getItemContentProps={(itemData: T) => ({
+    style: {
+      backgroundColor: 'pink',
+    },
+  })}
+/>
+```
+
 ## Examples
 
 ### ruuri v2 examples
