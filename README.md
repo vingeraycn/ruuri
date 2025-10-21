@@ -24,7 +24,7 @@
 
 ## Rencently News
 
-ruuri v2 will be released soon, migration from v1 checkout [here](./CHANGELOG.md)
+ruuri v2 released, migration from v1 checkout [here](./CHANGELOG.md)
 
 ## Table of Content
 
